@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Terms of Service - Gedi Poster</title><meta name="color-scheme" content="light dark"><style>
+<title>TikTok connection - Gedi Poster</title><meta name="color-scheme" content="light dark"><style>
 :root{--bg:#fafafa;--fg:#16181d;--muted:#5b616e;--line:#e3e5ea;--accent:#d6204b}
 @media (prefers-color-scheme:dark){:root{--bg:#121316;--fg:#ececf0;--muted:#9aa0ad;--line:#2a2d34;--accent:#ff5c7f}}
 *{box-sizing:border-box}
@@ -25,6 +25,7 @@ footer a{color:var(--muted)}
 <script>
 var p=new URLSearchParams(location.search);
 var m=document.getElementById("msg");
+if((p.get("state")||"").indexOf("local-")===0&&(p.get("code")||p.get("error"))){location.replace("http://localhost:8765/callback"+location.search);}
 if(p.get("error")){m.textContent="TikTok returned an error: "+(p.get("error_description")||p.get("error"));}
 else if(p.get("code")){m.textContent="Connection successful. You can close this page and return to the app.";}
 else{m.textContent="This page receives the sign-in result from TikTok. Nothing to do here.";}
